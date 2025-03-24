@@ -6,7 +6,7 @@ import os
 
 port = "8880"
 server_ip = get_ip()
-app = create_app()
+#app = create_app()
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	create_app()
