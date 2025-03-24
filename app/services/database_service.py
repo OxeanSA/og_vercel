@@ -7,7 +7,8 @@ from typing import Callable, Any
 
 from flask import jsonify, Response, abort, url_for
 from flask_login import current_user, logout_user
-from pymongo.errors import DuplicateKeyError, PyMongoError
+from pymongo.errors import DuplicateKeyError, PyMongoErrorq
+from pymongo.server_api import ServerApi
 from pymongo.mongo_client import MongoClient
 from werkzeug.security import generate_password_hash
 
@@ -15,10 +16,6 @@ uri = "mongodb+srv://oxeansa:<@Oxeanpassmongo1>@cluster0.sh0vm.mongodb.net/?appN
 
 client = MongoClient(uri, server_api=ServerApi('1'))
   
-# Create a new client and connect to the server
-client = MongoClient(host='192.168.1.4',
-                            port=27017)
-
 # database
 _db = client.get_database("dbv202")
 
