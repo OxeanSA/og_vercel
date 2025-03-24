@@ -3,6 +3,7 @@ from flask import make_response, request, jsonify
 from jinja2 import Environment, FileSystemLoader
 #from app.models.CollaborativeFiltering import recommend
 from app.resources.errors import BadTokenError
+from pymongo.server_api import ServerApi
 from pymongo import MongoClient
 from datetime import datetime
 from functools import wraps
@@ -24,8 +25,11 @@ _versions = [
     "beta"
 ]
 
+uri = "mongodb+srv://oxeansa:<@Oxeanpassmongo1>@cluster0.sh0vm.mongodb.net/?appName=Cluster0"
+
 def _DB():
-    client = MongoClient(host='mongodb+srv://oxeansa:<db_password>@cluster0.sh0vm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+    client = MongoClient(uri, server_api=ServerApi('1'))
+    client.admin.command('ping')
     db = client.get_database("dbv202")
     return db
 
